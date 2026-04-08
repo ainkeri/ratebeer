@@ -6,11 +6,11 @@
 
 <div id="beers">
   <% @beers.each do |beer| %>
-    <%= render beer %>
     <p>
-      <%= link_to "Show this beer", beer %>
+      <%= render beer %>
     </p>
   <% end %>
 </div>
 
 <%= link_to "New beer", new_beer_path %>
+<%= link_to "List of breweries", breweries_path %>

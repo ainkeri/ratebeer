@@ -1,17 +1,17 @@
 <div id="<%= dom_id beer %>">
-  <div>
+  <p>
     <strong>Name:</strong>
-    <%= beer.name %>
-  </div>
+    <%= link_to beer.name, beer %>
+  </p>
 
-  <div>
+  <p>
     <strong>Style:</strong>
     <%= beer.style %>
-  </div>
+  </p>
 
-  <div>
+  <p>
     <strong>Brewery:</strong>
-    <%= beer.brewery_id %>
-  </div>
+    <%= link_to beer.brewery.name, beer.brewery %>
+  </p>
 
 </div>
