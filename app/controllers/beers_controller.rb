@@ -1,5 +1,5 @@
 class BeersController < ApplicationController
-  before_action :set_beer, only: %i[ show edit update destroy ]
+  before_action :set_beer, only: %i[show edit update destroy]
 
   # GET /beers or /beers.json
   def index
@@ -14,13 +14,13 @@ class BeersController < ApplicationController
   def new
     @beer = Beer.new
     @breweries = Brewery.all
-    @styles = [ "Weizen", "Lager", "Pale ale", "IPA", "Porter", "Lowalcohol" ]
+    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter", "Lowalcohol"]
   end
 
   # GET /beers/1/edit
   def edit
     @breweries = Brewery.all
-    @styles = [ "Weizen", "Lager", "Pale ale", "IPA", "Porter", "Lowalcohol" ]
+    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter", "Lowalcohol"]
   end
 
   # POST /beers or /beers.json
@@ -31,8 +31,8 @@ class BeersController < ApplicationController
         format.html { redirect_to beers_path, notice: "Beer was successfully created." }
         format.json { render :show, status: :created, location: @beer }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @beer.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @beer.errors, status: :unprocessable_content }
       end
     end
   end
@@ -44,8 +44,8 @@ class BeersController < ApplicationController
         format.html { redirect_to @beer, notice: "Beer was successfully updated.", status: :see_other }
         format.json { render :show, status: :ok, location: @beer }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @beer.errors, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
+        format.json { render json: @beer.errors, status: :unprocessable_content }
       end
     end
   end
@@ -61,13 +61,14 @@ class BeersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_beer
-      @beer = Beer.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def beer_params
-      params.expect(beer: [ :name, :style, :brewery_id ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_beer
+    @beer = Beer.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def beer_params
+    params.expect(beer: [:name, :style, :brewery_id])
+  end
 end

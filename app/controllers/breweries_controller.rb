@@ -1,6 +1,6 @@
 class BreweriesController < ApplicationController
-  before_action :set_brewery, only: %i[ show edit update destroy ]
-  before_action :authenticate, only: [ :destroy ]
+  before_action :set_brewery, only: %i[show edit update destroy]
+  before_action :authenticate, only: [:destroy]
 
   # GET /breweries or /breweries.json
   def index
@@ -29,8 +29,8 @@ class BreweriesController < ApplicationController
         format.html { redirect_to @brewery, notice: "Brewery was successfully created." }
         format.json { render :show, status: :created, location: @brewery }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @brewery.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @brewery.errors, status: :unprocessable_content }
       end
     end
   end
@@ -42,8 +42,8 @@ class BreweriesController < ApplicationController
         format.html { redirect_to @brewery, notice: "Brewery was successfully updated.", status: :see_other }
         format.json { render :show, status: :ok, location: @brewery }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @brewery.errors, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
+        format.json { render json: @brewery.errors, status: :unprocessable_content }
       end
     end
   end
@@ -59,20 +59,22 @@ class BreweriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_brewery
-      @brewery = Brewery.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def brewery_params
-      params.expect(brewery: [ :name, :year ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_brewery
+    @brewery = Brewery.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def brewery_params
+    params.expect(brewery: [:name, :year])
+  end
 
   def authenticate
     admin_accounts = { "pekka" => "beer", "arto" => "foobar", "matti" => "ittam", "vilma" => "kangas" }
     authenticate_or_request_with_http_basic do |username, password|
       raise "Wrong username or password" unless admin_accounts[username] == password
+
       return true
     end
   end
