@@ -4,9 +4,19 @@
   <div>
     <h3>Username:</h3>
     <%= @user.username %>
-    <p><%= @user.username %> has made <%= pluralize(@user.ratings.count, "ratings")%>, average rating <%= @user.average_rating%></p>
+    <p>Has has made <%= pluralize(@user.ratings.count, "ratings")%>, average rating <%= @user.average_rating%></p>
+  </div>
+
+  <div>
+    <strong>member of</strong>
+    <ul>
+      <% @user.beer_clubs.each do | club | %>
+        <li><%= link_to club.name, club %></li>
+      <% end %>
+    </ul>
   </div>
   <div>
+
     <strong>ratings</strong>
     <ul>
       <% @user.ratings.each do |rating| %>

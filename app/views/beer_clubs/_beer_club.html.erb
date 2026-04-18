@@ -13,14 +13,4 @@
     <strong>City:</strong>
     <%= beer_club.city %>
   </div>
-
-  <div>
-    <strong>Members:</strong>
-    <ul>
-      <% beer_club.members.each do | member | %>
-        <li><%= link_to member.username, member %></li>
-      <% end %>
-    </ul>
-  </div>
-  
 </div>
