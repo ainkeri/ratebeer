@@ -28,9 +28,25 @@
       <%= link_to 'breweries', breweries_path %>
       <%= link_to 'beers', beers_path %>
       <%= link_to 'ratings', ratings_path%>
+      <%= link_to 'users', users_path%> |
+      <% if current_user %>
+        <%= link_to current_user.username, user_path(current_user.id)%>
+        <%= link_to "Rate a new beer", new_rating_path%>
+        <%= link_to "Sign out", signout_path,
+        data: {
+        "turbo-method": :delete
+        } %>
+      <% else %>
+        <%= link_to "Sign up", signup_path%>
+        <%= link_to "Sign in", signin_path%>
+      <% end %>
     </div>
 
     <%= yield %>
-    
+
+    <% if current_user %>
+      <p><%= current_user.username %> signed in</p>
+    <% end %>
+
   </body>
 </html>

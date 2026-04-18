@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<div id="<%= dom_id @user %>">
+  <div>
+    <h3>Username:</h3>
+    <%= @user.username %>
+    <p><%= @user.username %> has made <%= pluralize(@user.ratings.count, "ratings")%>, average rating <%= @user.average_rating%></p>
+  </div>
+  <div>
+    <strong>ratings</strong>
+    <ul>
+      <% @user.ratings.each do |rating| %>
+        <li> <%= render rating %> <%= button_to 'delete', rating, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div>
+  <%= link_to "Edit this user", edit_user_path(@user) %> |
+  <%= link_to "Back to users", users_path %>
+
+  <%= button_to "Destroy this user", @user, method: :delete %>
+</div>
