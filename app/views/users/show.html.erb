@@ -4,7 +4,7 @@
   <div>
     <h3>Username:</h3>
     <%= @user.username %>
-    <p>Has has made <%= pluralize(@user.ratings.count, "ratings")%>, average rating <%= @user.average_rating%></p>
+    <p>Has made <%= pluralize(@user.ratings.count, "ratings")%>, average rating <%= @user.average_rating%></p>
   </div>
 
   <div>
@@ -16,6 +16,16 @@
     </ul>
   </div>
   <div>
+
+  <div>
+    <strong>favorite brewery:</strong>
+    <%= @user.favorite_brewery %>
+  </div>
+  
+  <div>
+    <strong>favorite beer:</strong>
+    <%= @user.favorite_beer%>
+  </div>
 
     <strong>ratings</strong>
     <ul>
