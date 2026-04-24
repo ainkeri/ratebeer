@@ -175,9 +175,13 @@
           1,
           null,
           1,
-          167,
+          177,
           null,
-          133,
+          138,
+          null,
+          null,
+          1,
+          4,
           null,
           null
         ]
@@ -300,6 +304,7 @@
       },
       "/Users/inkeriahlstrom/Desktop/University/RubyOnRails/beer/ratebeer/app/controllers/beers_controller.rb": {
         "lines": [
+          1,
           1,
           1,
           1,
@@ -451,15 +456,6 @@
           1,
           0,
           null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
           null
         ]
       },
@@ -497,6 +493,7 @@
       },
       "/Users/inkeriahlstrom/Desktop/University/RubyOnRails/beer/ratebeer/app/controllers/beer_clubs_controller.rb": {
         "lines": [
+          0,
           0,
           0,
           null,
@@ -671,6 +668,6 @@
         "branches": {}
       }
     },
-    "timestamp": 1777042657
+    "timestamp": 1777044072
   }
 }
