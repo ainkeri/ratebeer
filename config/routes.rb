@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :breweries
   resources :ratings, only: [ :index, :new, :create, :destroy ]
   resource :session, only: [ :new, :create, :destroy ]
+  resources :places, only: [ :index, :show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -20,6 +21,9 @@ Rails.application.routes.draw do
   get "signin", to: "sessions#new"
   delete "signout", to: "sessions#destroy"
 
+  get "places", to: "places#index"
+  post "places", to: "places#search"
+  
   # Defines the root path route ("/")
   # root "posts#index"
   root "breweries#index"
