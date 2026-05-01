@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :beer_club_id, style: "display: block" %>
     <%= form.select :beer_club_id, options_from_collection_for_select(@beer_clubs, :id, :name, nil)  %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit class:"btn btn-primary" %>
   </div>
 <% end %>
