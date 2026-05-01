@@ -36,7 +36,7 @@ group :production do
 end
 
 group :test do
-  gem "rspec-rails", "~> 6.0.0"
+  gem "rspec-rails", "~> 8.0.4"
   gem "factory_bot_rails"
   gem "capybara"
   gem "selenium-webdriver"
