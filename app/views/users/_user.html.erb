@@ -2,5 +2,22 @@
   <div>
     <strong>Username:</strong>
     <%= user.username %>
+    <div>
+      <% if user.closed %>
+        <span class="badge bg-secondary">closed</span>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    Has made <%= pluralize(user.ratings.count, "ratings")%>, average rating <%= round(user.average_rating)%>
+  </div>
+  <div>
+    <strong>Favorite brewery:</strong>
+    <%= user.favorite_brewery %>
+  </div>
+  
+  <div>
+    <strong>Favorite beer:</strong>
+    <%= user.favorite_beer%>
   </div>
 </div>

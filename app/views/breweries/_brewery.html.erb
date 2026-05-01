@@ -1,6 +1,9 @@
 <div id="<%= dom_id brewery %>">
   <h2>
     <%= brewery.name %>
+    <% if not brewery.active %>
+      <span class="badge bg-secondary">retired</span>
+    <% end %>
   </h2>
 
   <i>
@@ -21,7 +24,7 @@
     <% if brewery.ratings.empty? %>
       Brewery has no beers with ratings
     <% else %>
-      Brewery has <%= pluralize(brewery.ratings.count, "rating") %> with an average of <%= brewery.average_rating %>
+      Brewery has <%= pluralize(brewery.ratings.count, "rating") %> with an average of <%= round(brewery.average_rating) %>
     <% end %>
   </p>
 </div>

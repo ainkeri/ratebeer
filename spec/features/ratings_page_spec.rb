@@ -34,7 +34,7 @@ describe "Rating" do
 
     visit ratings_path
 
-    expect(page).to have_content("List of ratings")
+    expect(page).to have_content("Recent ratings")
     expect(page).to have_content("iso 3 15")
     expect(page).to have_content("iso 3 20")
     expect(page).to have_content("Karhu 10")

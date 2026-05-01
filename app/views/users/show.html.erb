@@ -2,7 +2,7 @@
   <div>
     <h3>Username:</h3>
     <%= @user.username %>
-    <p>Has made <%= pluralize(@user.ratings.count, "ratings")%>, average rating <%= @user.average_rating%></p>
+    <p>Has made <%= pluralize(@user.ratings.count, "ratings")%>, average rating <%= round(@user.average_rating)%></p>
   </div>
 
   <div>
@@ -25,16 +25,26 @@
     <%= @user.favorite_beer%>
   </div>
 
-    <strong>ratings</strong>
-    <ul>
-      <% @user.ratings.each do |rating| %>
-        <li> <%= render rating %>
-        <% if @user == current_user %>
-          <%= button_to 'Delete', rating, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-danger" %>
-        <% end %>
-        </li>
+  <div>
+    <% if current_user&.admin %>
+      <% if @user.closed %>
+        <%= link_to "Open account", toggle_account_status_user_path(@user.id), data: {turbo_method: "post"}, class: "btn btn-danger" %>
+      <% else %>
+        <%= link_to "Close account", toggle_account_status_user_path(@user.id), data: {turbo_method: "post"}, class: "btn btn-danger" %>
       <% end %>
-    </ul>
+    <% end %>
+  </div>
+
+  <strong>ratings</strong>
+  <ul>
+    <% @user.ratings.each do |rating| %>
+      <li> <%= render rating %>
+      <% if @user == current_user %>
+        <%= button_to 'Delete', rating, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class:"btn btn-danger" %>
+      <% end %>
+      </li>
+    <% end %>
+  </ul>
   </div>
 </div>
 

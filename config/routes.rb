@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   resources :memberships
   resources :beer_clubs
-  resources :users
+  resources :users do
+    post 'toggle_account_status', on: :member
+  end
   resources :beers
-  resources :breweries
+  resources :breweries do
+    post 'toggle_activity', on: :member
+  end
   resources :ratings, only: [ :index, :new, :create, :destroy ]
   resource :session, only: [ :new, :create, :destroy ]
   resources :places, only: [ :index, :show ]
@@ -23,7 +27,7 @@ Rails.application.routes.draw do
 
   get "places", to: "places#index"
   post "places", to: "places#search"
-  
+
   # Defines the root path route ("/")
   # root "posts#index"
   root "breweries#index"

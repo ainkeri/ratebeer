@@ -9,6 +9,9 @@ class Brewery < ApplicationRecord
 
   validate :year_created_cannot_be_in_the_future
 
+  scope :active, -> { where active: true }
+  scope :retired, -> { where active: [nil, false] }
+
   def year_created_cannot_be_in_the_future
     return unless year.present? && year > Time.zone.now.year
 
@@ -24,5 +27,10 @@ class Brewery < ApplicationRecord
   def restart
     self.year = 2022
     puts "changed year to #{year}"
+  end
+
+  def self.top(n)
+    sorted_by_rating_in_desc_order = Brewery.all.sort_by { |b| -b.average_rating }
+    sorted_by_rating_in_desc_order.first(n)
   end
 end

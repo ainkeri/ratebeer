@@ -68,6 +68,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def toggle_account_status
+    user = User.find(params[:id])
+    user.update_attribute :closed, !user.closed
+
+    account_status = user.closed ? "closed" : "restored"
+
+    redirect_to users_path, notice: "#{user.username}'s account is now #{account_status}"
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
