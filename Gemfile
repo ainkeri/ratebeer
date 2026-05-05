@@ -22,7 +22,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "httparty"
 
 gem 'sprockets', '~> 4.0'
-gem 'bootstrap', '~> 5.2.0'
+gem 'bootstrap', '~> 5.3.8'
 gem 'jquery-rails'
 gem 'mini_racer'
 
